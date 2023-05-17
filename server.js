@@ -22,10 +22,19 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/create-user', (req, res) => {
+  handlers.createUser((statusCode,finalOutput) => {
+    res.status(statusCode).send(finalOutput);
+  });
+});
+
+
 
 // app.post('/users',postUser);
 
 // app.get('/login',loginUser);
+
+
 
 app.listen(PORT, () => {
   console.log('App is listening on Port:',PORT);
