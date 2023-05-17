@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const handlers = require('./lib/handlers');
 app = express();
-const {postUser,loginUser} = require('./model/userModel')
+// const {postUser,loginUser} = require('./model/userModel')
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -13,9 +14,18 @@ app.use(bodyParser.json());
 
 PORT = 3000;
 
-app.post('/users',postUser);
+app.use(express.static(__dirname + '/public'))
 
-app.get('/login',loginUser);
+app.get('/', (req, res) => {
+  handlers.index((statusCode,finalOutput) => {
+    res.status(statusCode).send(finalOutput);
+  });
+});
+
+
+// app.post('/users',postUser);
+
+// app.get('/login',loginUser);
 
 app.listen(PORT, () => {
   console.log('App is listening on Port:',PORT);
