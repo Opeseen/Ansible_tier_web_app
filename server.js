@@ -28,7 +28,11 @@ app.get('/create-user', (req, res) => {
   });
 });
 
-
+app.get('/login-user', (req, res) => {
+  handlers.loginUser((statusCode,finalOutput) => {
+    res.status(statusCode).send(finalOutput);
+  });
+});
 
 // app.post('/users',postUser);
 
