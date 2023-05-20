@@ -12,7 +12,7 @@ const connection = db.createConnection({
 
 connection.query('CREATE DATABASE IF NOT EXISTS users;')
 connection.query('USE users;');
-const createTable = "CREATE TABLE IF NOT EXISTS data (ID int NOT NULL AUTO_INCREMENT, firstname varchar(15), lastname varchar(15), phone varchar(15), password varchar(10), tosAgreement varchar(8), PRIMARY KEY(ID))";
+const createTable = "CREATE TABLE IF NOT EXISTS data (ID int NOT NULL AUTO_INCREMENT, firstname varchar(15), lastname varchar(15), username varchar(15), password varchar(10), tosAgreement varchar(8), PRIMARY KEY(ID))";
 connection.query(createTable, (err,result) => {
   if(err) throw err;
   console.log('Table Created')

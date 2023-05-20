@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const handlers = require('./lib/handlers');
 app = express();
-// const {postUser,loginUser} = require('./model/userModel')
+const {postUser,loginUser} = require('./model/userModel')
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -29,14 +29,15 @@ app.get('/create-user', (req, res) => {
 });
 
 app.get('/login-user', (req, res) => {
-  handlers.loginUser((statusCode,finalOutput) => {
+  handlers.loginPage((statusCode,finalOutput) => {
     res.status(statusCode).send(finalOutput);
   });
 });
 
-// app.post('/users',postUser);
 
-// app.get('/login',loginUser);
+app.post('/user-created',postUser);
+
+app.post('/user-loggedin',loginUser);
 
 
 
