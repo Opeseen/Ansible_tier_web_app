@@ -1,10 +1,10 @@
 const {connection} = require('../database/schema');
 
 function postUser(req,res){
-  const firstName = typeof(req.body.firstName) === 'string' && req.body.firstName.trim().length > 0 ? req.body.firstName.trim() : false;
-  const lastName = typeof(req.body.lastName) === 'string' && req.body.lastName.trim().length > 0 ? req.body.lastName.trim() : false;
-  const username = typeof(req.body.username) === 'string' && req.body.username.trim().length === 10 ? req.body.username.trim() : false;
-  const password = typeof(req.body.password) === 'string' && req.body.password.trim().length > 0 ? req.body.password.trim() : false;
+  const firstName = typeof(req.body.firstName) === 'string' && req.body.firstName.trim().length > 2 ? req.body.firstName.trim() : false;
+  const lastName = typeof(req.body.lastName) === 'string' && req.body.lastName.trim().length > 2 ? req.body.lastName.trim() : false;
+  const username = typeof(req.body.username) === 'string' && req.body.username.trim().length > 2 ? req.body.username.trim() : false;
+  const password = typeof(req.body.password) === 'string' && req.body.password.trim().length > 4 ? req.body.password.trim() : false;
   const tosAgreement = req.body.tosAgreement ? req.body.tosAgreement : false;
 
   if(firstName && lastName && username && password && tosAgreement){
@@ -40,8 +40,8 @@ function postUser(req,res){
 
 
 function loginUser(req,res){
-  const username = typeof(req.body.username) === 'string' && req.body.username.trim().length === 10 ? req.body.username.trim() : false;
-  const password = typeof(req.body.password) === 'string' && req.body.password.trim().length > 0 ? req.body.password.trim() : false;
+  const username = typeof(req.body.username) === 'string' && req.body.username.trim().length > 2 ? req.body.username.trim() : false;
+  const password = typeof(req.body.password) === 'string' && req.body.password.trim().length > 4 ? req.body.password.trim() : false;
 
   if(username && password){
     console.log('Login Information Received');
