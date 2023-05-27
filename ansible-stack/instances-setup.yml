@@ -65,24 +65,18 @@
         path: vars/variables.yml
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INSTANCE PRIVATE IP'S VARIBLES"
         block: |
-          web_private_ip: {{web_out.tagged_instances[0].private_ip}}
-          app_private_ip: {{app_out.tagged_instances[0].private_ip}}
-    
-    - name: Store Inventory file for Connection to hosts
-      blockinfile:
-        path: vars/inventory-file
-        create: True
-        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INVENTORY HOST FILE CONNECTION"
-        block: |
-          web ansibble_host={{web_out.tagged_instances[0].private_ip}}
-          app ansible_host={{app_out.tagged_instances[0].private_ip}}
-          cntrol ansible_host=127.0.0.1 ansible_connection=local
+          web01 ansibble_host="{{web_out.tagged_instances[0].private_ip}}"
+          app01 ansible_host="{{app_out.tagged_instances[0].private_ip}}"
+          cntl ansible_host=127.0.0.1 ansible_connection=local
 
           [websrvgrp]
-          web
-
+          web01
+          
           [appsrvgrp]
-          control
+          app01
+
+          [control]
+          cntr
 
           [stack_inst:children]
           websrvgrp
@@ -91,3 +85,5 @@
           [stack_inst:vars]
           ansible_user=ubuntu
           ansible_ssh_private_key_file=nodejs-key.pem
+          #ansible_python_interpreter=/usr/bin/python3
+    
