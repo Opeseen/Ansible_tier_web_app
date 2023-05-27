@@ -10,7 +10,7 @@
         name: lb_SG
         description: Security Group for the Load balancer
         region: "{{region}}"
-        vpc_id: "{[vpcid]}"
+        vpc_id: "{{vpcid}}"
         rules:
         - proto: tcp
           from_port: 80
