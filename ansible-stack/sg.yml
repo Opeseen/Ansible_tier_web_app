@@ -17,6 +17,8 @@
           to_port: 80
           cidr_ip: 0.0.0.0/0
           rule_desc: Allow HTTP from any where
+        tags:
+          Name: LB-SG
       register: lb_SG_out
 
     - name: Create Security group for all host instance
@@ -36,7 +38,9 @@
           from_port: 80
           to_port: 80
           group_id: "{{lb_SG_out.group_id}}"
-          rule_desc: Allow connection from load balancer security group
+          rule_desc: Allow connection from load balancer security Group
+        tags:
+          Name: Control-SG
       register: controlSG_out
 
     - name: Update security group for all host
@@ -62,6 +66,8 @@
             from_port: 3306
             to_port: 3306
             group_id: "{{controlSG_out.group_id}}"
+        tags:
+          Name: rds-SG
       register: rdsSG_out
     
     - name: Store RDS Security group id
