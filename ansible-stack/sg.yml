@@ -40,15 +40,16 @@
       register: controlSG_out
 
     - name: Update security group for all host
-      ec2_group: nodejsSG
-      description: Security group update
-      region: "{{region}}"
-      vpc_id: "{{vpcid}}"
-      purge_rules: False
-      rules:
-      - proto: all
-        group_id: "{{controlSG_out.group_id}}"
-        rule_desc: Allow all traffic from within
+      ec2_group:
+        name: nodejsSG
+        description: Security group update
+        region: "{{region}}"
+        vpc_id: "{{vpcid}}"
+        purge_rules: False
+        rules:
+        - proto: all
+          group_id: "{{controlSG_out.group_id}}"
+          rule_desc: Allow all traffic from within
     
     - name: Create Security group for RDS Database
       ec2_group:
