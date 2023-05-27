@@ -72,6 +72,7 @@
     - name: Store VPC register output as a variables
       blockinfile:
         path: vars/variables.yml
+        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR VPC SETUP VARIABLES"
         block: |
           vpcid: {{vpcout.vpc.id}}
           pubsub1id: {{pubsub1_out.subnet.id}}
@@ -79,5 +80,3 @@
           pubsub3id: {{pubsub3_out.subnet.id}}
           igwid: {{igw_out.gateway_id}}
           pubRTid: {{pubRT_out.route_table.id}}
-    
-

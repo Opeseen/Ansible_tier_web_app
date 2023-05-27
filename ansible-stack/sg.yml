@@ -73,6 +73,7 @@
     - name: Store RDS Security group id
       blockinfile:
         path: vars/variables.yml
+        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR SECURITY GROUP VARIABLES"
         block: |
           rdsSG_id: {{rdsSG_out.group_id}}
           controlSG_id: {{controlSG_out.group_id}}

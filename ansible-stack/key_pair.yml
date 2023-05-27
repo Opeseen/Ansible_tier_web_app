@@ -18,18 +18,6 @@
     - name: Store Login key name as variable
       blockinfile:
         path: vars/variables.yml
-        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR {{keyout.key.name}} Keypair Name"
+        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR {{keyout.key.name}} KEYPAIR NAME"
         block: |
           key_name: {{keyout.key.name}}
-    
-    - name: Add mappings to /etc/hosts
-      blockinfile:
-        path: /tmp/host
-        create: True
-        block: |
-          {{ item.ip }} {{ item.name }}
-        marker: "# {mark} ANSIBLE MANAGED BLOCK {{ item.name }}"
-      loop:
-        - { name: host1, ip: 10.10.1.10 }
-        - { name: host2, ip: 10.10.1.11 }
-        - { name: host3, ip: 10.10.1.12 }
