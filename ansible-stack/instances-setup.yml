@@ -70,7 +70,7 @@
     
     - name: Store Inventory file for Connection to hosts
       blockinfile:
-        path: ./inventory-file
+        path: /vars/inventory_file
         create: True
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INVENTORY HOST FILE CONNECTION"
         block: |
@@ -78,18 +78,7 @@
           app ansible_host="{{app_out.tagged_instances[0].private_ip}}"
           local ansible_host=127.0.0.1 ansible_connection=local
 
-          [websrvgrp]
-          web
-
-          [appsrvgrp]
-          app
-
-          [control]
-          local
-
-          [stack_inst:children]
-          websrvgrp
-          appsrvgrp
+         
 
           [stack_inst:vars]
           ansible_user=ubuntu
