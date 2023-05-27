@@ -11,8 +11,7 @@
     - name: Store Login Key
       copy:
         content: "{{keyout.key.private_key}}"
-        dest: ./nodejs_key.pem
-        mode: '0400'
+        dest: ./nodejs-key.pem
       when: keyout.changed
 
     - name: Store Login key name as variable
