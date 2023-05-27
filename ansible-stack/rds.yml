@@ -2,6 +2,9 @@
   connection: local
   gather_facts: False
   tasks:
+    - name: Import Variables for VPC Setup
+      include_vars: variables.yml
+      
     - name: SetUp RDS DB instance
       rds_instance:
         engine: mysql
