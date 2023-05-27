@@ -6,8 +6,7 @@
     
     - name: Update hosts file for all the Hosts
       blockinfile:
-        path: /tmp/host
-        create: true
+        path: /etc/hosts
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR HOSTS IP VARIABLES"
         block: |
           {{web_private_ip}} web
