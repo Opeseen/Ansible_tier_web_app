@@ -70,7 +70,7 @@
     
     - name: Store Inventory file for Connection to hosts
       blockinfile:
-        path: ./inventory_file
+        path: ./inventory-file
         create: True
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INVENTORY HOST FILE CONNECTION"
         block: |
