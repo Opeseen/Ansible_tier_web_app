@@ -74,10 +74,24 @@
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INSTANCE PRIVATE IP'S VARIBLES"
         create: true
         block: |
-          web ansible_host="{{web_out.tagged_instances[0].private_ip}}"
-          app ansible_host="{{app_out.tagged_instances[0].private_ip}}"
-          control ansible_host=127.0.0.1 ansible_connection=local
+          web ansible_host={{web_out.tagged_instances[0].private_ip}}
+          app ansible_host={{app_out.tagged_instances[0].private_ip}}
+          local ansible_host=127.0.0.1 ansible_connection=local
 
+          [websrvgrp]
+          web
+
+          [appsrvgrp]
+          app01
+
+          [control]
+          local
+
+          [stack_inst:children]
+          websrvgrp
+          appsrvgrp
+
+          [stack_inst:vars]
           ansible_user=ubuntu
           ansible_ssh_private_key_file=nodejs-key.pem
           #ansible_python_interpreter=/usr/bin/python3
