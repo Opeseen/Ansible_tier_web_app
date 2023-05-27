@@ -17,3 +17,6 @@ PubSub3Cidr: '172.20.3.0/24'
 zone1: us-east-1a
 zone2: us-east-1b
 zone3: us-east-1c
+
+# region
+region : us-east-1

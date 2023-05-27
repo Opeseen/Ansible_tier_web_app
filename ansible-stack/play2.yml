@@ -1,7 +1,0 @@
-- name: Setup NodeJs Stack
-  hosts: localhost
-  connection: local
-  gather_facts: False
-  tasks:
-    - name: Import variables
-      include_vars: variables.yml
