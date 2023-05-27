@@ -59,16 +59,24 @@
           - protocol: http
             load_balancer_port: 80
             instance_port: 80
-    
+        
     - name: Store instance Private IP's as Variables in [vars File]
       blockinfile:
-        path: vars/inventory
-        create: true
+        path: vars/variables.yml
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INSTANCE PRIVATE IP'S VARIBLES"
         block: |
-          web01 ansible_host="{{web_out.tagged_instances[0].private_ip}}"
-          app01 ansible_host="{{app_out.tagged_instances[0].private_ip}}"
-          cntl ansible_host=127.0.0.1 ansible_connection=local
+          web_ip: "{{web_out.tagged_instances[0].private_ip}}"
+          app_ip: "{{app_out.tagged_instances[0].private_ip}}"
+        
+    - name: Store Ansible Inventory File For Connectivity
+      blockinfile:
+        path: vars/inventory
+        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INSTANCE PRIVATE IP'S VARIBLES"
+        create: true
+        block: |
+          web ansible_host="{{web_out.tagged_instances[0].private_ip}}"
+          app ansible_host="{{app_out.tagged_instances[0].private_ip}}"
+          control ansible_host=127.0.0.1 ansible_connection=local
 
           ansible_user=ubuntu
           ansible_ssh_private_key_file=nodejs-key.pem
