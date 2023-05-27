@@ -74,8 +74,10 @@
         path: vars/variables.yml
         block: |
           vpcid: {{vpcout.vpc.id}}
-          pubsub1id: {{ pubsub1_out.subnet.id }}
-          pubsub2id: {{ pubsub2_out.subnet.id }}
-          pubsub3id: {{ pubsub3_out.subnet.id }}
-          igwid: {{ igw_out.gateway_id }}
-          pubRTid: "{{ pubRT_out.route_table.id }}"
+          pubsub1id: {{pubsub1_out.subnet.id}}
+          pubsub2id: {{pubsub2_out.subnet.id}}
+          pubsub3id: {{pubsub3_out.subnet.id}}
+          igwid: {{igw_out.gateway_id}}
+          pubRTid: {{pubRT_out.route_table.id}}
+    
+    
