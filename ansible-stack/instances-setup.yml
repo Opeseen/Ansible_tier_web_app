@@ -23,7 +23,7 @@
           Name: app_host
         group_id: "{{controlSG_id}}"
         vpc_subnet_id: "{{pubsub1id}}"
-      register: app01_out
+      register: app_out
 
     - name: SetUP User Web interface application enviroment instance
       ec2:
