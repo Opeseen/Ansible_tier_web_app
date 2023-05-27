@@ -72,7 +72,7 @@
       blockinfile:
         path: vars/inventory_file
         create: True
-        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INVENTORY FILE HOST CONNECTION"
+        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INVENTORY HOST FILE CONNECTION"
         block: |
           web ansibble_host="{{web_out.tagged_instances[0].private_ip}}"
           app ansible_host="{{app_out.tagged_instances[0].private_ip}}"
