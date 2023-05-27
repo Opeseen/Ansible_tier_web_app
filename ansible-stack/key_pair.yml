@@ -17,8 +17,8 @@
 
     - name: Store Login key name as variable
       blockinfile:
-        path: /tmp/host
-        marker: "# {mark} "
+        path: vars/variables.yml
+        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR {{{keyout.key.name}} Keypair Name"
         block: |
           key_name: {{keyout.key.name}}
     
