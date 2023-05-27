@@ -4,14 +4,15 @@
   tasks:
     - name: Create EC2 Key Pair
       ec2_key:
-        name: sample
+        name: nodejs
         region: us-east-1
       register: keyout
 
     - name: Store Login Key
       copy:
         content: "{{keyout.key.private_key}}"
-        dest: ./sample-key.pem
+        dest: ./nodejs-key.pem
+        mode: 0400
       when: keyout.changed
 
     - name: Store Login key name as variable
