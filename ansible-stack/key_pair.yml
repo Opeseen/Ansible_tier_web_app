@@ -16,6 +16,6 @@
 
     - name: Store Login key name as variable
       blockinfile:
-        path: path..........
+        path: vars/variaables.yml
         block: |
           key_name: {{keyout.key.name}}
