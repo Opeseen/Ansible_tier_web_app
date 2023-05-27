@@ -74,8 +74,8 @@
         create: True
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INVENTORY HOST FILE CONNECTION"
         block: |
-          web ansibble_host="{{web_out.tagged_instances[0].private_ip}}"
-          app ansible_host="{{app_out.tagged_instances[0].private_ip}}"
+          web ansibble_host={{web_out.tagged_instances[0].private_ip}}
+          app ansible_host={{app_out.tagged_instances[0].private_ip}}
           cntrol ansible_host=127.0.0.1 ansible_connection=local
 
           [websrvgrp]
@@ -83,9 +83,6 @@
 
           [appsrvgrp]
           control
-
-          [control]
-          cntl
 
           [stack_inst:children]
           websrvgrp
