@@ -1,5 +1,5 @@
 - name: Set Up Tasks
-  hosts: localhost
+  hosts: app
   connection: local
   become: yes
   tasks:
