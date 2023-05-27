@@ -1,7 +1,5 @@
 - name: Set Up Tasks
-  hosts: app
-  connection: local
-  become: yes
+  hosts: appsrvgrp
   tasks:
     - name: Installing NODEJS and NPM Packages
       apt:
