@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const handlers = require('./lib/handlers');
-app = express();
-const {postUser,loginUser} = require('./model/userModel')
+const app = express();
+// const {postUser,loginUser} = require('./model/userModel')
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -35,9 +35,9 @@ app.get('/login-user', (req, res) => {
 });
 
 
-app.post('/user-created',postUser);
+// app.post('/user-created',postUser);
 
-app.post('/user-loggedin',loginUser);
+// app.post('/user-loggedin',loginUser);
 
 
 
