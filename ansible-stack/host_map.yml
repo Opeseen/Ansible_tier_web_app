@@ -1,12 +1,13 @@
 - name: Set host IP mapping to /etc/hosts file of all instances
-  hosts: all
+  hosts: localhost
   tasks:
     - name: Import Variables for host IP mapping
       include_vars: variables.yml
     
     - name: Update hosts file for all the Hosts
       blockinfile:
-        path: /etc/hosts
+        path: /tmp/hosts
+        create: true
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR HOSTS IP VARIABLES"
         block: |
           {{web_private_ip}} web
