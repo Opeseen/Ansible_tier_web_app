@@ -18,6 +18,7 @@
     - name: Store Login key name as variable
       blockinfile:
         path: /tmp/host
+        marker: "# {mark} "
         block: |
           key_name: {{keyout.key.name}}
     
