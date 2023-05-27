@@ -79,13 +79,17 @@
           local ansible_host=127.0.0.1 ansible_connection=local
          
           [websrvgrp]
-          web01
-          
+          web
+
           [appsrvgrp]
-          app01
+          app
 
           [control]
-          cntr
+          local
+
+          [stack_inst:children]
+          websrvgrp
+          appsrvgrp
 
           [stack_inst:vars]
           ansible_user=ubuntu
