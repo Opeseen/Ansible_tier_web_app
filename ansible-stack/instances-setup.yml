@@ -65,8 +65,8 @@
         path: vars/variables.yml
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR INSTANCE PRIVATE IP'S VARIBLES"
         block: |
-          web_ip: "{{web_out.tagged_instances[0].private_ip}}"
-          app_ip: "{{app_out.tagged_instances[0].private_ip}}"
+          web_private_ip: "{{web_out.tagged_instances[0].private_ip}}"
+          app_private_ip: "{{app_out.tagged_instances[0].private_ip}}"
         
     - name: Store Ansible Inventory File For Connectivity
       blockinfile:
