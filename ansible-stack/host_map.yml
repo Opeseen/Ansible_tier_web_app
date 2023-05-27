@@ -1,5 +1,5 @@
 - name: Set host IP mapping to /etc/hosts file of all instances
-  hosts: all
+  hosts: control
   tasks:
     - name: Import Variables for host IP mapping
       include_vars: variables.yml
