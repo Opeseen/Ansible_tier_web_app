@@ -3,7 +3,7 @@
   gather_facts: False
   tasks:
     - name: Import Variables for VPC Setup
-      include_vars: vars/variables.yml
+      include_vars: variables.yml
     
     - name: Create Nodejs VPC
       ec2_vpc_net:
@@ -80,4 +80,4 @@
           igwid: {{igw_out.gateway_id}}
           pubRTid: {{pubRT_out.route_table.id}}
     
-    
+

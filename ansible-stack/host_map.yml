@@ -1,0 +1,12 @@
+- name: Set host IP mapping to /etc/hosts file of all instances
+  hosts: all
+  tasks:
+    - name: Import Variables for host IP mapping
+      include_vars: variables.yml
+    
+    - name: Update hosts file for all the Hosts
+      blockinfile:
+        path: /etc/hosts
+        block: |
+          {{web_private_ip}} web
+          {{app_private_ip}} app

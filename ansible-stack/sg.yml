@@ -75,3 +75,5 @@
         path: vars/variables.yml
         block: |
           rdsSG_id: {{rdsSG_out.group_id}}
+          controlSG_id: {{controlSG_out.group_id}}
+          lbSG_id: {{lb_SG_out.group_id}}
