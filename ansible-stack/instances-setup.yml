@@ -1,5 +1,4 @@
-- name: Setup web application db instances
-  hosts: localhost
+- hosts: localhost
   connection: local
   become: yes
   tasks:

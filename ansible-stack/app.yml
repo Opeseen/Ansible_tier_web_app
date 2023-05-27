@@ -21,7 +21,7 @@
     - name: Clone git repo for source code when the Directory doesn't exists
       git:
         repo: "https://github.com/Opeseen/Nodejs_ansible_vpc.git"
-        dest: /tmp/nodejs/
+        dest: /tmp/nodejs
         version: master
       when: not dir_out.stat.exists
       register: git_out
