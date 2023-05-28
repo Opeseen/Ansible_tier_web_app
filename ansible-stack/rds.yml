@@ -7,7 +7,7 @@
 
     - name: Setup RDS Subnet group
       rds_subnet_group:
-        # state: absent
+        state: present
         region: "{{region}}"
         name: nodejsdb-subnet
         description: Subnet group for nodejs Application
