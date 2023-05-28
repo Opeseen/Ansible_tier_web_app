@@ -29,7 +29,7 @@
 
     - name: Copy Database Connection Configuration file
       template:
-        src: templates/config.js
+        src: templates/config.j2
         dest: /tmp/nodejs/app/database/config.js
 
     - name: CD into the clonned repository and Install NPM modules
