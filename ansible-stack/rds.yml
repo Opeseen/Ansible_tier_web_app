@@ -32,6 +32,7 @@
     - name: Setup RDS Subnet group
       rds_subnet_group:
         state: present
+        region: "{{region}}"
         name: norwegian-blue
         description: My Fancy Ex Parrot Subnet Group
         subnets:
