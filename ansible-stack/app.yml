@@ -1,6 +1,9 @@
 - name: Set Up Tasks
   hosts: appsrvgrp
   tasks:
+    - name: Import Variables for APP Setup
+      include_vars: variables.yml
+
     - name: Installing NODEJS and NPM Packages
       apt:
         name: "{{item}}"
