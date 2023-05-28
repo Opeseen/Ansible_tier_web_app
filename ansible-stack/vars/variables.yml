@@ -20,3 +20,7 @@ zone3: us-east-1c
 
 # region
 region : us-east-1
+
+# RDS Configurations
+dbuser: admin
+dbpass: admin1234

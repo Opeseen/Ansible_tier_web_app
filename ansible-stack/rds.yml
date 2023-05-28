@@ -17,10 +17,6 @@
         tags:
           Name: nodejsdb-subnet
       register: subnet_out
-      
-    - debug:
-        var: subnet_out
-    
 
     - name: SetUp RDS DB instance
       rds_instance:
@@ -31,7 +27,7 @@
         region: "{{region}}"
         allocated_storage: 10
         db_name: users
-        db_subnet_group_name: nodejsdb-subnet
+        db_subnet_group_name: "{{subnet_out.subnet_group.db_subnet_group_name}}"
         vpc_security_group_ids: "{{rdsSG_id}}"
         master_user_password: admin1234
         master_username: admin
@@ -44,4 +40,11 @@
       register: db_out
 
     - debug:
-        var: db_out
+        var: db_out.endpoint.address
+    
+    - name: Store DB connection Endpoint as a variables
+      blockinfile:
+        path: vars/variables.yml
+        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR DB ENDPOINT"
+        block: |
+          dbendpoint: {{db_out.endpoint.address}}
