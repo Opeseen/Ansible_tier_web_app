@@ -4,7 +4,7 @@
   tasks:
     - name: Import Variables for VPC Setup
       include_vars: variables.yml
-      
+
     - name: SetUp RDS DB instance
       rds_instance:
         engine: mysql
@@ -14,6 +14,7 @@
         region: "{{region}}"
         allocated_storage: 10
         db_name: users
+        db_subnet_group_name: nodejsdb-subnet
         vpc_security_group_ids: "{{rdsSG_id}}"
         master_user_password: admin1234
         master_username: admin
