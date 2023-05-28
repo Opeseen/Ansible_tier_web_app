@@ -5,29 +5,42 @@
     - name: Import Variables for VPC Setup
       include_vars: variables.yml
 
-    - name: SetUp RDS DB instance
-      rds_instance:
-        engine: mysql
-        engine_version: 8.0.31
-        instance_type: db.t2.small
-        db_instance_identifier: nodejsDB
-        region: "{{region}}"
-        allocated_storage: 10
-        db_name: users
-        db_subnet_group_name: nodejsdb-subnet
-        vpc_security_group_ids: "{{rdsSG_id}}"
-        master_user_password: admin1234
-        master_username: admin
-        publicly_accessible: False
-        skip_final_snapshot: true
-        storage_type: gp2
+    # - name: SetUp RDS DB instance
+    #   rds_instance:
+    #     engine: mysql
+    #     engine_version: 8.0.31
+    #     instance_type: db.t2.small
+    #     db_instance_identifier: nodejsDB
+    #     region: "{{region}}"
+    #     allocated_storage: 10
+    #     db_name: users
+    #     db_subnet_group_name: nodejsdb-subnet
+    #     vpc_security_group_ids: "{{rdsSG_id}}"
+    #     master_user_password: admin1234
+    #     master_username: admin
+    #     publicly_accessible: False
+    #     skip_final_snapshot: true
+    #     storage_type: gp2
+    #     tags:
+    #       Name: NodeJSDB
+    #     state: absent
+    #   register: db_out
+
+    # - debug:
+    #     var: db_out
+
+    - name: Setup RDS Subnet group
+      rds_subnet_group:
+        state: present
+        name: norwegian-blue
+        description: My Fancy Ex Parrot Subnet Group
+        subnets:
+          - "{{pubsub1id}}"
+          - "{{pubsub2id}}"
         tags:
-          Name: NodeJSDB
-        state: absent
-      register: db_out
-
+          Name: nodejsdb-subnet
+      register: subnet_out
+      
     - debug:
-        var: db_out
-
-
+        var: subnet_out
 
