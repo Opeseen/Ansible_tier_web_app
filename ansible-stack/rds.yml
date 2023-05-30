@@ -36,7 +36,6 @@
         storage_type: gp2
         tags:
           Name: NodeJSDB
-        # state: absent
       register: db_out
 
     - debug:
