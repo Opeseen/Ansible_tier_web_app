@@ -5,7 +5,7 @@
     - name: Import Variables for VPC Setup
       include_vars: variables.yml
     
-    - name: Create Nodejs VPC
+    - name: Create Project VPC
       ec2_vpc_net:
         name: "{{vpc_name}}"
         cidr_block: "{{vpcCidr}}"
@@ -21,7 +21,7 @@
         map_public: true
         region: "{{region}}"
         tags:
-          Name: nodejs-pubsub1
+          Name: project-pubsub1
       register: pubsub1_out
 
     - name: Create a Public subnet 2 in Zone 2
@@ -32,7 +32,7 @@
         map_public: true
         region: "{{region}}"
         tags:
-          Name: nodejs-pubsub2
+          Name: project-pubsub2
       register: pubsub2_out
 
     - name: Create a Public subnet 3 in Zone 3
@@ -43,7 +43,7 @@
         map_public: true
         region: "{{region}}"
         tags:
-          Name: nodejs-pubsub3
+          Name: project-pubsub3
       register: pubsub3_out
     
     - name: Create Internet Gateway
@@ -51,7 +51,7 @@
         vpc_id: "{{vpcout.vpc.id}}"
         region: "{{region}}"
         tags:
-          Name: nodejs_igw
+          Name: project_igw
       register: igw_out
 
     - name: Create Route table for public subnet
@@ -66,7 +66,7 @@
           - dest: 0.0.0.0/0
             gateway_id: "{{igw_out.gateway_id}}"
         tags:
-          Name: nodejs_pubRT
+          Name: project_pubRT
       register: pubRT_out
 
     - name: Store VPC register output as a variables
