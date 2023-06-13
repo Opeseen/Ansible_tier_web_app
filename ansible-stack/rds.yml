@@ -9,13 +9,13 @@
       rds_subnet_group:
         state: present
         region: "{{region}}"
-        name: nodejsdb-subnet
-        description: Subnet group for nodejs Application
+        name: projectdb-subnet
+        description: Subnet group for the RDS database
         subnets:
           - "{{pubsub1id}}"
           - "{{pubsub2id}}"
         tags:
-          Name: nodejsdb-subnet
+          Name: projectdb-subnet
       register: subnet_out
 
     - name: SetUp RDS DB instance
@@ -23,19 +23,19 @@
         engine: mysql
         engine_version: 8.0.31
         instance_type: db.t3.micro
-        db_instance_identifier: nodejsDB
+        db_instance_identifier: appdb
         region: "{{region}}"
         allocated_storage: 10
         db_name: users
         db_subnet_group_name: "{{subnet_out.subnet_group.db_subnet_group_name}}"
         vpc_security_group_ids: "{{rdsSG_id}}"
-        master_user_password: admin1234
-        master_username: admin
+        master_user_password: "{{dbpass}}"
+        master_username: "{{dbuser}}"
         publicly_accessible: False
         skip_final_snapshot: true
         storage_type: gp2
         tags:
-          Name: NodeJSDB
+          Name: PROJECT_DB
       register: db_out
 
     - debug:
