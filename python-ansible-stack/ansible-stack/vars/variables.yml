@@ -24,5 +24,3 @@ region : us-east-1
 # RDS Configurations
 dbuser: admin
 dbpass: admin1234
-
-

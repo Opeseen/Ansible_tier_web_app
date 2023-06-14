@@ -23,7 +23,7 @@
 
     - name: Create Security group for all host instance
       ec2_group:
-        name: nodejsSG
+        name: projectSG
         description: Allow SSH connection
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
@@ -45,7 +45,7 @@
 
     - name: Update security group for all host
       ec2_group:
-        name: nodejsSG
+        name: projectSG
         description: Security group update
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
@@ -58,7 +58,7 @@
     - name: Create Security group for RDS Database
       ec2_group:
         name: rdsSG
-        description: Allow Connection from the Nodejs application SG
+        description: Allow Connection from the application SG
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
         rules:
