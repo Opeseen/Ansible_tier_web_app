@@ -75,18 +75,18 @@
           app ansible_host={{app_out.tagged_instances[0].private_ip}}
           local ansible_host=127.0.0.1 ansible_connection=local
 
-          [websrvgrp]
+          [server_1]
           web
 
-          [appsrvgrp]
+          [server_2]
           app
 
           [control]
           local
 
           [stack_inst:children]
-          websrvgrp
-          appsrvgrp
+          server_1
+          server_2
 
           [stack_inst:vars]
           ansible_user=ubuntu
