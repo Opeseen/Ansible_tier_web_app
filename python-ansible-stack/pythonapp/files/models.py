@@ -7,7 +7,7 @@ class User(db.Model,UserMixin):
     username = db.Column(db.String(15),unique=True)
     first_name = db.Column(db.String(15))
     last_name = db.Column(db.String(15))
-    password = db.Column(db.Text(150))
+    password = db.Column(db.String(50))
     date = db.Column(db.DateTime(timezone=True),default=func.now())
 
 class Record(db.Model):
