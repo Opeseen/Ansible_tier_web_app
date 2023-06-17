@@ -16,12 +16,12 @@
         </tr>
       </thead>
       <tbody>
-        {% for row1,row2,row3,row4 in zip(data1,data2,data3,data4) %}
+        {% for rows in data %}
               <tr>
-                <td>{{row1}}</td>
-                <td>{{row2}}</td>
-                <td>{{row3}}</td>
-                <td>{{row4}}</td>
+                <td>{{rows['po_number']}}</td>
+                <td>{{rows['invoice_number']}}</td>
+                <td>{{rows['invoice_date']}}</td>
+                <td>{{rows['due_date']}}</td>
               </tr>
         {% endfor %}
       </tbody>
