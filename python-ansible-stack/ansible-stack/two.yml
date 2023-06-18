@@ -6,7 +6,7 @@
       ec2_group:
         name: "{{dbuser}}"
         description: Security Group for the Load balancer
-        region: "{{region}}"
+        region: us-east-1
         rules:
         - proto: tcp
           from_port: 80
