@@ -1,5 +1,5 @@
 - name: Set Up Tasks
-  hosts: server_2
+  hosts: localhost
   tasks:
     - name: Import Variables for APP Setup
       include_vars: variables.yml
