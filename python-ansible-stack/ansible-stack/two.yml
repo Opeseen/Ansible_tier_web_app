@@ -2,6 +2,9 @@
   connection: local
   gather_facts: False
   tasks:
+    - name: Import variables for Security Group Setup
+      include_vars: variables.yml
+
     - name: Create Security group for Load balancer
       ec2_group:
         name: "{{dbuser}}"
