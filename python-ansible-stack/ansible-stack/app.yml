@@ -17,7 +17,7 @@
         - python3-pip
       register: package_out
     
-    - name: Check if "tmp/nodejs" Directory Exists
+    - name: Check if "tmp/flask_python" Directory Exists
       stat:
         path: /tmp/flask_python
       register: dir_out
