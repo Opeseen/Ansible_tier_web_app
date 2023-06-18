@@ -1,0 +1,3 @@
+# RDS Configurations
+dbuser: admin
+dbpass: admin1234
