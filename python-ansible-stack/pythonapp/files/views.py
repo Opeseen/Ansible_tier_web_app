@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template;
-# from mysql.connector import Error;
 from .models import Record;
 views = Blueprint('views',__name__)
 
