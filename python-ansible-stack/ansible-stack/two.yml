@@ -18,12 +18,22 @@
         - python3-pip
       register: package_out
 
+    - name: Check if "tmp/nodejs" Directory Exists
+      stat:
+        path: /tmp/flask_python
+      register: dir_out
+
+    - name: Delecte the directory if it Exists
+      file:
+        path: /tmp/flask_python
+        state: absent
+      when: dir_out.stat.exists
+
     - name: Clone git repo for source code
       git:
         repo: "{{git_url}}"
         dest: /tmp/flask_python
         version: python_sec
-        force: True
       register: git_out
 
     - name: Copy Database Connection Configuration file

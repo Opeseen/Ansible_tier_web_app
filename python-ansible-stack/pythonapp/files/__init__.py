@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy;
 import mysql.connector
-import os, config;
-
+import os;
+from .config import connection
 baseDir = os.path.abspath(os.path.dirname(__file__))
 
 db = SQLAlchemy()
@@ -13,7 +13,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'admin'
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(baseDir, 'database.db')
-    app.config['SQLALCHEMY_DATABASE_URI'] = config.connection
+    app.config['SQLALCHEMY_DATABASE_URI'] = connection
     db.init_app(app)
 
     from .views import views
