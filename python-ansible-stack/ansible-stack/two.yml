@@ -1,5 +1,5 @@
 - name: Set Up Tasks
-  hosts: local
+  hosts: localhost
   gather_facts: False
   tasks:
     - name: Import Variables for APP Setup
