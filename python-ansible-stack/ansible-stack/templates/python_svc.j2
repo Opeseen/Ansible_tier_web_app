@@ -1,11 +1,11 @@
 [Unit]
-Description=nodejsapp
+Description=ptthonapp
 After=network.target
 
 [Service]
 Type=simple
 User=ubuntu
-ExecStart=/usr/bin/node /tmp/nodejs/app/server.js
+ExecStart=/usr/bin/python3 /tmp/flask_python/python-ansible-stack/pythonapp/main.py
 Restart=on-failure
 
 [Install]

@@ -4,6 +4,9 @@
     - name: Import Variables for APP Setup
       include_vars: variables.yml
 
+    - name: Import Variables for RDS Setup
+      include_vars: config.yml
+
     - name: Installing Python3 on the machine
       apt:
         name: "{{item}}"
@@ -29,21 +32,21 @@
     - name: CD into the clonned repository and Install App Dependies
       command: "pip install -r requirements.txt"
       args:
-        chdir: /tmp/flask_python/python-ansible-stack/pythonapp/files
+        chdir: /tmp/flask_python/python-ansible-stack/pythonapp/
       register: pip_out
 
     - name: SetUP systemd configuration file to start the App
       template:
-        src: templates/nodejs_svc.j2
-        dest: /etc/systemd/system/nodejsapp.service
+        src: templates/python_svc.j2
+        dest: /etc/systemd/system/pythonapp.service
 
     - name: Reload the systemd file
       systemd:
         daemon_reload: true
 
-    - name: Start and Enable the nodejsapp using systemd
+    - name: Start and Enable the pythonapp using systemd
       systemd:
-        name: nodejsapp
+        name: pythonapp
         state: started
         enabled: true
       register: sys_out
