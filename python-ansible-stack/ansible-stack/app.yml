@@ -1,5 +1,5 @@
 - name: Set Up Tasks
-  hosts: appsrvgrp
+  hosts: server_2
   tasks:
     - name: Import Variables for APP Setup
       include_vars: variables.yml
@@ -16,15 +16,14 @@
 
     - name: Clone git repo for source code
       git:
-        repo: "https://github.com/Opeseen/Nodejs_ansible_vpc.git"
-        dest: /tmp/nodejs
-        version: master
-      when: not dir_out.stat.exists
+        repo: "{{git_url}}"
+        dest: /tmp/flask_python
+        version: python_sec
       register: git_out
 
     - name: Copy Database Connection Configuration file
       template:
-        src: templates/config.j2
+        src: vars/config.j2
         dest: /tmp/nodejs/app/database/config.js
 
     - name: CD into the clonned repository and Install NPM modules

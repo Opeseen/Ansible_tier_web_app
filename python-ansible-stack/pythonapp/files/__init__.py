@@ -12,8 +12,8 @@ DB_NAME = "database.db"
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'admin'
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(baseDir, 'database.db')
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://admin:admin1234@python-flaskdb.cfzrgfw3zego.us-east-1.rds.amazonaws.com/tododb'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(baseDir, 'database.db')
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://'
     db.init_app(app)
 
     from .views import views
@@ -25,7 +25,7 @@ def create_app():
     with app.app_context():
         db.create_all()
 
-    # create_database(app)
+    create_database(app)
 
     return app
 

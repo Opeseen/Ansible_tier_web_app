@@ -21,6 +21,5 @@ zone3: us-east-1c
 # region
 region : us-east-1
 
-# RDS Configurations
-dbuser: admin
-dbpass: admin1234
+# GitHub URL
+git_url: https://github.com/Opeseen/Ansible_tier_web_app.git
