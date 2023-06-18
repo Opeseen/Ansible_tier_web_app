@@ -7,7 +7,7 @@
 
     - name: Create Security group for Load balancer
       ec2_group:
-        name: lb_SG
+        name: "{{dbuser}}"
         description: Security Group for the Load balancer
         region: "{{region}}"
         rules:
@@ -17,5 +17,5 @@
           cidr_ip: 0.0.0.0/0
           rule_desc: Allow HTTP from any where
         tags:
-          Name: "{{dbuser}}"
+          Name: user"
       register: lb_SG_out
