@@ -1,5 +1,6 @@
 - name: Set Up Tasks
-  hosts: server_2
+  hosts: local
+  gather_facts: False
   tasks:
     - name: Import Variables for APP Setup
       include_vars: variables.yml
@@ -19,6 +20,7 @@
         repo: "{{git_url}}"
         dest: /tmp/flask_python
         version: python_sec
+        force: True
       register: git_out
 
     - name: Copy Database Connection Configuration file
@@ -31,20 +33,3 @@
       args:
         chdir: /tmp/flask_python/python-ansible-stack/pythonapp/files
       register: pip_out
-
-    - name: SetUP systemd configuration file to start the App
-      template:
-        src: templates/nodejs_svc.j2
-        dest: /etc/systemd/system/nodejsapp.service
-
-    - name: Reload the systemd file
-      systemd:
-        daemon_reload: true
-
-    - name: Start and Enable the nodejsapp using systemd
-      systemd:
-        name: nodejsapp
-        state: started
-        enabled: true
-      register: sys_out
-
