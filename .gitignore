@@ -3,4 +3,4 @@
 *.pem
 *.db
 *.env
-# *config.yml
+*config.yml
