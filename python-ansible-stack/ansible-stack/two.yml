@@ -31,5 +31,5 @@
     - name: CD into the clonned repository and Install App Dependies
       command: "pip install -r requirements.txt"
       args:
-        chdir: /tmp/flask_python/python-ansible-stack/pythonapp/files
+        chdir: /tmp/flask_python/python-ansible-stack/pythonapp/
       register: pip_out
