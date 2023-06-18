@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template;
-from mysql.connector import Error;
-from .models import User, Record;
-import pandas as pd;
+# from mysql.connector import Error;
+from .models import Record;
 views = Blueprint('views',__name__)
 
 @views.route('/')
