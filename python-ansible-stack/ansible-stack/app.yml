@@ -1,5 +1,5 @@
 - name: Set Up Tasks
-  hosts: localhost
+  hosts: server_2
   tasks:
     - name: Import Variables for APP Setup
       include_vars: variables.yml
@@ -35,7 +35,7 @@
         version: python_sec
       register: git_out
 
-    - name: Copy Database Connection Configuration file
+    - name: Copy RDS Connection Configuration file to the Application for connectivity to the database
       template:
         src: templates/config.j2
         dest: /tmp/flask_python/python-ansible-stack/pythonapp/files/config.py

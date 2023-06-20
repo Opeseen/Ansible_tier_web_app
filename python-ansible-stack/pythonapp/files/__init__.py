@@ -29,10 +29,10 @@ def create_app():
 
     return app
 
-# def create_database(app):
-#     if not os.path.exists('files/' + DB_NAME):
-#         db.create_all(app=app)
-#         print('Database Created')
+def create_database(app):
+    if not os.path.exists('files/' + DB_NAME):
+        db.create_all(app=app)
+        print('Database Created')
 
 
 
