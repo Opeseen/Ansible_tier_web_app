@@ -1,9 +1,9 @@
-upstream nodejs {
+upstream pythonapp {
  server app:3000;
 }
 server {
   listen 80;
 location / {
-  proxy_pass http://nodejs;
+  proxy_pass http://pythonapp;
 }
 }

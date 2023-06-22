@@ -1,33 +1,33 @@
 - name: Setup Nginx Server
-  hosts: websrvgrp
+  hosts: server_1
   gather_facts: no
   tasks:
-    - name: Install Nginx Service
+    - name: Installing Nginx Service
       apt:
         name: nginx
         state: present
         update_cache: yes
 
-    - name: Start & ENable Nginx
+    - name: Starting & Enabling Nginx
       service:
         name: nginx
         state: started
         enabled: yes
 
-    - name: Disable Nginx default website
+    - name: Disabling the current Nginx default website
       file:
         path: /etc/nginx/sites-enabled/default
         state: absent
 
-    - name: Deploy Nginx config file
+    - name: Deploying Nginx config file
       template:
         src: templates/nginxconf.j2
-        dest: /etc/nginx/sites-available/nodejsapp
+        dest: /etc/nginx/sites-available/pythonapp
 
-    - name: Enable Nodejs website
+    - name: Enabling the application to be reacheable on the website
       file:
-        src: /etc/nginx/sites-available/nodejsapp
-        dest: /etc/nginx/sites-enabled/nodejsapp
+        src: /etc/nginx/sites-available/pythonapp
+        dest: /etc/nginx/sites-enabled/pythonapp
         state: link
       notify:
         - Restart Nginx

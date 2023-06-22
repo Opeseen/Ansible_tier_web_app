@@ -1,4 +1,4 @@
-- name: Set Up Tasks
+- name: Set Up Application Runtime
   hosts: server_2
   tasks:
     - name: Import Variables for APP Setup
@@ -22,7 +22,7 @@
         path: /tmp/flask_python
       register: dir_out
 
-    - name: Delecte the directory if it Exists
+    - name: Delete the directory if it Exists
       file:
         path: /tmp/flask_python
         state: absent
@@ -61,4 +61,3 @@
         state: started
         enabled: true
       register: sys_out
-
