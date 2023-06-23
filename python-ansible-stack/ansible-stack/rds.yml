@@ -26,7 +26,7 @@
         engine: mysql
         engine_version: 8.0.31
         instance_type: db.t2.micro
-        db_instance_identifier: flaskapp_db
+        db_instance_identifier: flaskappdb
         region: "{{region}}"
         allocated_storage: 10
         db_name: "{{dbname}}"
