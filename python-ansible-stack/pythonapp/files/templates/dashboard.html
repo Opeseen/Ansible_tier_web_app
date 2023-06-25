@@ -4,30 +4,32 @@
 {% block content %}
 
   <div class="container">
-    <h3 style="color: brown; text-align: center;">Welcome to Mundial PO dashboard</h3>
+    <h3 style="color: brown; text-align: center;">WELCOME TO YOUR NOTE DASHBOARD</h3>
 
     <table class="table table-fluid" id="myTable">
       <thead>
         <tr>
-          <th>PO NUMBER</th>
-          <th>INVOICE NUMBER</th>
-          <th>INVOICE DATE</th>
-          <th>DUE DATE</th>
+          <th>ID</th>
+          <th>NOTE</th>
+          <th id="noteStatus">NOTE STATUS</th>
+          <th>CREATION DATE</th>
         </tr>
       </thead>
       <tbody>
         {% for rows in data %}
               <tr>
-                <td>{{rows['po_number']}}</td>
-                <td>{{rows['invoice_number']}}</td>
-                <td>{{rows['invoice_date']}}</td>
-                <td>{{rows['due_date']}}</td>
+                <td>{{rows['id']}}</td>
+                <td class="noteContent">{{rows['note']}}</td>
+                <td id="noteStatuses">{{rows['status']}}</td>
+                <td>{{rows['date']}}</td>
               </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-
+  <div class="ctaWrapper">
+    <a class="modifyNote red" href="enter-note-id">Update/Delete a note</a>
+  </div>
 {% endblock %}
 
 

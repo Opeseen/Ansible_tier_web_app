@@ -4,6 +4,7 @@
  */
 
 /* Resets */
+
 body,p,h1,h2,h3,h4,h5,h6,div,span,header,footer,img,a,a:hover,a:active,a:visited,table,tr,td,th,form,input,button,select,textarea{
   line-height: 100%;
   padding: 0;
@@ -160,11 +161,13 @@ body.index .blurb{
 
 .warning{
   font-style: italic;
+  font-weight: bold !important;
   color: #c83737;
   font-size: 17px;
   text-align: center;
   line-height: 150%;
   padding: 0 0 20px 0 ;
+  font-family:"Calibri", sans-serif;
 }
 
 /* Form Styling for Account Creation page and others */
@@ -174,32 +177,10 @@ body.index .blurb{
   padding: 15px;
 }
 
-.formError{
-  display: none;
-  background-color: #c83737;
-  font-style: italic;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 5px;
-  margin: 0 0 15px 0;
-  text-align: center;
-  border-color: #d87070;
-  border-width: 2px;
-  border-style: solid;
-}
-
-.formSuccess{
-  display: none;
-  background-color: #217844;
-  font-style: italic;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 5px;
-  margin: 0 0 15px 0;
-  text-align: center;
-  border-color: #35c06d;
-  border-width: 2px;
-  border-style: solid;
+.modifyFormWrapper{
+  margin: 0 auto;
+  max-width: 300px;
+  padding: 15px;
 }
 
 hr {
@@ -213,23 +194,16 @@ input,select,option {
   width: 100%;
 }
 
-.checkboxGroup input{
-  display: inline-block;
-  width: initial;
-  margin: 20px;
-}
-
-input.disabled{
-  background-color: #efefef;
-}
-
 .inputWrapper{
   padding: 0 0 20px 0;
 }
 
 .inputLabel{
   padding: 0 0 5px 0;
-  color: #808080;
+  color: rgb(255, 0, 0);
+  text-align: center;
+  font-style: italic;
+  font-size: 15px;
 }
 
 .backButton{
@@ -274,20 +248,48 @@ td a, td a:hover, td a:active{
   cursor: pointer;
 }
 
-/* Page specific styles for dashboard */
 
-#noChecksMessage td{
+
+/* Flash messages flashing section */
+
+.flashMessages{
   text-align: center;
-  font-style: italic;
-  font-size: 20px;
-  padding: 20px;
 }
 
-#noChecksMessage{
-  display: none;
+.flash{
+  color: #fff;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  padding: 12px;
+  width: 400px;
+  cursor: pointer;
 }
 
-#createCheckCTA{
-  margin-top: 40px;
-  display: none;
+.flash.green{
+  background-color: #217844 !important;
+}
+
+.flash.red{
+  background-color: #c83737 !important;
+}
+
+.noteContent{
+  padding: 25px;
+  width: 600px;
+}
+
+.modifyNote.red{
+  background-color: rgba(255, 0, 0, 0.771) !important;
+  color: #fff;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  padding: 12px;
+  width: 150px;
+  font-style: italic
 }
