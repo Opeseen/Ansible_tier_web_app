@@ -293,3 +293,15 @@ td a, td a:hover, td a:active{
   width: 150px;
   font-style: italic
 }
+
+.homepageimg img{
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 25px;
+  width: 250px;
+  /* height: 250px; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
