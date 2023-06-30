@@ -16,9 +16,9 @@
           <div class="inputWrapper">
               <div class="inputLabel">NOTE STATUS</div>
               <select name="status" id="status">
-                <option value="UNCOMPLETED">UNCOMPLETED</option>
-                <option value="COMPLETED">COMPLETED</option>
-                <option value="PARTIALLY COMPLETED">PARTIALLY COMPLETED</option>
+                <option value="{{data.status}}">{{data.status}}</option>
+                <!-- <option value="COMPLETED">COMPLETED</option> -->
+                <!-- <option value="PARTIALLY COMPLETED">PARTIALLY COMPLETED</option> -->
               </select>
             </div>
           <div class="inputWrapper ctaWrapper">
@@ -36,6 +36,25 @@
     </div>
   </form>
 </div>
+
+
+<script>
+const selectForm = document.getElementById("status");
+let presentFormValue
+const appendedFormValue = ['COMPLETED','UNCOMPLETED','PARTIALLY COMPLETED']
+
+for (var i = 0; i < selectForm.length; i++) {
+  const option = selectForm.options[i];
+  presentFormValue = option.value;
+}
+appendedFormValue.forEach((result) =>{
+  const addElement = document.createElement("option");
+  if(result !== presentFormValue){
+    addElement.text = result;
+    selectForm.add(addElement);
+  }
+})
+</script>
 
 {% endblock %}
 
