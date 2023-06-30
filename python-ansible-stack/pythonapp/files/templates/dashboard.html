@@ -11,7 +11,7 @@
         <tr>
           <th>ID</th>
           <th>NOTE</th>
-          <th id="noteStatus">NOTE STATUS</th>
+          <th>NOTE STATUS</th>
           <th>CREATION DATE</th>
         </tr>
       </thead>
@@ -20,7 +20,7 @@
               <tr>
                 <td>{{rows['id']}}</td>
                 <td class="noteContent">{{rows['note']}}</td>
-                <td id="noteStatuses">{{rows['status']}}</td>
+                <td>{{rows['status']}}</td>
                 <td>{{rows['date']}}</td>
               </tr>
         {% endfor %}
@@ -31,11 +31,7 @@
     <a class="modifyNote red" href="enter-note-id">Update/Delete a note</a>
   </div>
 
-  <script>
-    var table = document.getElementById("noteStatus");
-    const row = table.getElementsByTagName("tr");
-    console.log(row)
-  </script>
+
 {% endblock %}
 
 
