@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template;
+from flask import Blueprint, render_template, flash;
 from .models import Record;
 
 views = Blueprint('views',__name__)
@@ -10,9 +10,13 @@ def home():
 
 @views.route('/dashboard')
 def dashboard():
-    record = Record.query.all()
-    return render_template('dashboard.html', data=record)
+    try:
+        record = Record.query.all()
+        return render_template('dashboard.html', data=record)
+    except:
+        flash('There was an error while loading your note...',category='error')
 
+    return render_template('dashboard.html')
 
 @views.route('/enter-note-id')
 def noteid():
