@@ -294,6 +294,19 @@ td a, td a:hover, td a:active{
   font-style: italic
 }
 
+.modifyNote.green{
+  background-color: green !important;
+  color: #fff;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  padding: 12px;
+  width: 150px;
+  font-style: italic
+}
+
 .homepageimg img{
   align-items: center;
   border: 1px solid #ddd;
