@@ -3,4 +3,5 @@
 *.pem
 *.db
 *.env
+*.pyc
 # *config.yml
