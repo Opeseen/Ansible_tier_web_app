@@ -79,10 +79,9 @@ def deleteSelected():
         payload = request.json['ids']
         if payload:
             payload = payload.split(',')
-            print(payload)
             try:
-                for x in payload:
-                    noteid = Record.query.filter_by(id=(x)).first()
+                for ids in payload:
+                    noteid = Record.query.filter_by(id=(ids)).first()
                     db.session.delete(noteid)
                     db.session.commit()
                 response = jsonify('<span class=\'flash green\'>Your note has been successfully deleted</span>')
@@ -94,41 +93,41 @@ def deleteSelected():
                 return response
     return redirect(url_for('views.home'))
 
-    # return render_template('note_page.html')
-    # noteid = int(request.args.get('note_id'))
-    # if request.method == 'GET': 
-        # for x,y in noteid.items():
-        #     print(x,y)
-       
-        # print(noteid)
-        
-       
-    # if request.method == 'POST':
-        # print(g.notesid)
-        # print("hello")
-        # return render_template('home.html')
-    #     note = request.form.get('note').upper().strip()
-    #     status = request.form.get('status').upper().strip()
-    #     print(note,status)
-        # notesid = int(request.args.get('note_id'))
-        # print(notesid)
-        # note = request.form.get('note').upper().strip()
-        # status = request.form.get('status').upper().strip()
-        # 
-       # dictData = {
-        #     "id" : data.id,
-        #     "status" : data.status,
-        #     "note" : data.note
-        # }
-        # jsonData = json.dumps(dictData)
-        # print(jsonData)
+# return render_template('note_page.html')
+# noteid = int(request.args.get('note_id'))
+# if request.method == 'GET': 
+    # for x,y in noteid.items():
+    #     print(x,y)
     
+    # print(noteid)
+    
+    
+# if request.method == 'POST':
+    # print(g.notesid)
+    # print("hello")
+    # return render_template('home.html')
+#     note = request.form.get('note').upper().strip()
+#     status = request.form.get('status').upper().strip()
+#     print(note,status)
+    # notesid = int(request.args.get('note_id'))
+    # print(notesid)
+    # note = request.form.get('note').upper().strip()
+    # status = request.form.get('status').upper().strip()
+    # 
+    # dictData = {
+    #     "id" : data.id,
+    #     "status" : data.status,
+    #     "note" : data.note
+    # }
+    # jsonData = json.dumps(dictData)
+    # print(jsonData)
+
 
 #     try:
-    #         noteid.note = note
-    #         noteid.status = status
-    #         db.session.commit()    
-    #         flash('Your note has been successfully updated', category='success')
-    #         return render_template('home.html')
-    #     except:
-    #         flash('There was an error while updating the note')
+#         noteid.note = note
+#         noteid.status = status
+#         db.session.commit()    
+#         flash('Your note has been successfully updated', category='success')
+#         return render_template('home.html')
+#     except:
+#         flash('There was an error while updating the note')

@@ -29,24 +29,46 @@ $(function(){
     });
     
     if(ids.length > 0){
-      console.log(ids)
-      $.ajax({
-          type: "POST",
-          contentType: 'application/json;charset=UTF-8',
-          url: "/deleteSelected",
-          data: JSON.stringify({'ids': ids}),
-          dataType: "json",
-          cache: false,
-          success: function(msg) {
-              $("#msg").html(msg)
-              setTimeout(() =>{
-                  window.location.href = '/'
-              },1500)
+      // Confirm box
+      bootbox.confirm({
+        message: "Are you sure you want to delete the selected record.?",
+        buttons:{
+          confirm:{
+            label: 'Yes',
+            className: 'btn-success'
           },
-          error: function(jqXHR, textStatus, errorThrown) {
-              $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
+          cancel:{
+            label: 'No',
+            className: 'btn-danger'
           }
-      });
+        },
+        // Write a callback function
+        callback: function(result){
+          if(result){
+            $.ajax({
+              type: "POST",
+              contentType: 'application/json;charset=UTF-8',
+              url: "/deleteSelected",
+              data: JSON.stringify({'ids': ids}),
+              dataType: "json",
+              cache: false,
+              success: function(msg){
+                $("#msg").html(msg)
+                setTimeout(() =>{
+                  window.location.href = '/dashboard'
+                },1500)
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
+              }
+            });
+          
+          }else{
+            bootbox.alert("Selected items cancelled for deletion")
+          }
+        }
+
+      });    
       
     }else{
       $("#msg").html('<span class="flash red">You must select at least one id for deletion</span>');
