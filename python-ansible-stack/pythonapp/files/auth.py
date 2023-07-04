@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for;
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify;
 from .models import Record;
 from . import db;
 
@@ -52,7 +52,7 @@ def update():
                 db.session.commit()    
                 flash('Your note has been successfully updated', category='success')
                 return redirect(url_for('views.home'))
-            except:
+            except Exception as e:
                 flash('There was an error while updating the note', category='error')
                 return redirect(url_for('views.home'))
       
@@ -73,6 +73,26 @@ def delete():
             return redirect(url_for('views.home'))
     return redirect(url_for('views.home'))
 
+@auth.route('/deleteSelected',methods=['POST','GET'])
+def deleteSelected():
+    if request.method == 'POST':
+        payload = request.json['ids']
+        if payload:
+            payload = payload.split(',')
+            print(payload)
+            try:
+                for x in payload:
+                    noteid = Record.query.filter_by(id=(x)).first()
+                    db.session.delete(noteid)
+                    db.session.commit()
+                response = jsonify('<span class=\'flash green\'>Your note has been successfully deleted</span>')
+                response.status_code = 200
+                return response
+            except:
+                response = jsonify('<span class=\'flash red\'>OOPS, an internal error occur during deletion</span>')
+                response.status_code = 500
+                return response
+    return redirect(url_for('views.home'))
 
     # return render_template('note_page.html')
     # noteid = int(request.args.get('note_id'))

@@ -25,15 +25,31 @@ $(function(){
     let comma = '';
     $("input:checkbox[name='row-check']:checked").each(function() {
       ids = ids + comma + this.value;
-      comma = ',';
-      
+      comma = ',';   
     });
     
     if(ids.length > 0){
       console.log(ids)
-      $("#msg").html('<span class="flash green">Items successfully picked for deletion</span>');
+      $.ajax({
+          type: "POST",
+          contentType: 'application/json;charset=UTF-8',
+          url: "/deleteSelected",
+          data: JSON.stringify({'ids': ids}),
+          dataType: "json",
+          cache: false,
+          success: function(msg) {
+              $("#msg").html(msg)
+              setTimeout(() =>{
+                  window.location.href = '/'
+              },1500)
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
+          }
+      });
+      
     }else{
-      $("#msg").html('<span class="flash red">You must select at least one product for deletion</span>');
+      $("#msg").html('<span class="flash red">You must select at least one id for deletion</span>');
     }
   
   })
