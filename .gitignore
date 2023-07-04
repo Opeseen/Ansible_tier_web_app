@@ -5,3 +5,4 @@
 *.env
 *.pyc
 # *config.yml
+*__pycache__
