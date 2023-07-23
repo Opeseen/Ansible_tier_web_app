@@ -2,7 +2,7 @@ FROM python:3.6
 
 RUN mkdir -p app
 
-COPY . .
+COPY . /app
 
 WORKDIR /app
 
