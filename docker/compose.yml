@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  vproapp:
+    build:
+      context: ./pythonapp
+    links:
+      - "vprodb"
+    ports:
+      - "3000:3000"
+
+  vprodb:
+    image: mysql8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin1234
+    volumes:
+      - vprodbdata:/var/lib.mysql
+
+volumes:
+  vprodbdata: {}
