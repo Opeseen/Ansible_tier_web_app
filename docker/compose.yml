@@ -13,8 +13,9 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=admin1234
-      - MYSQL_DATABASE=flaskdb
+      MYSQL_USER: horpeyemi
+      MYSQL_PASSWORD: admin1234
+      MYSQL_DATABASE: flaskdb
     volumes:
       - vprodbdata:/var/lib/mysql
 
