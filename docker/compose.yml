@@ -14,11 +14,9 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: admin1234
-      MYSQL_DATABASE: flaskdb
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: admin5055
     volumes:
       - vprodbdata:/var/lib/mysql
+      - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
 
 volumes:
   vprodbdata: {}
