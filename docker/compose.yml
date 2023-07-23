@@ -2,21 +2,21 @@ version: '3.8'
 services:
   vproapp:
     build:
-      context: .
+      context: ./app
     links:
       - "vprodb"
     ports:
       - "3000:3000"
 
   vprodb:
-    image: mysql:8.0
+    build:
+      context: ./db
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: admin1234
     volumes:
       - vprodbdata:/var/lib/mysql
-      - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
 
 volumes:
   vprodbdata: {}

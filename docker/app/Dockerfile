@@ -2,9 +2,9 @@ FROM python:latest
 
 RUN mkdir -p app
 
-COPY . /app
+COPY . /application
 
-WORKDIR /app
+WORKDIR /application
 
 RUN pip install -r requirements.txt
 
