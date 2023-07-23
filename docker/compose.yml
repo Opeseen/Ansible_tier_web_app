@@ -15,7 +15,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admin1234
     volumes:
-      - vprodbdata:/var/lib.mysql
+      - vprodbdata:/var/lib/mysql
 
 volumes:
   vprodbdata: {}
