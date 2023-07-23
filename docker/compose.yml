@@ -2,7 +2,7 @@ version: '3.8'
 services:
   vproapp:
     build:
-      context: ./pythonapp
+      context: .
     links:
       - "vprodb"
     ports:
