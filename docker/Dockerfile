@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 3000
 
-CMD python connect.py
+CMD python main.py
