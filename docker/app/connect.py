@@ -4,7 +4,7 @@ try:
     mydb = mysql.connector.connect(
         host="vprodb",
 		user="root",
-		password="flaskdb"
+		password="admin1234"
 	)
     print('DATABASE CONNECTED')
     
