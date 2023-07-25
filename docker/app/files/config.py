@@ -1,1 +1,1 @@
-connection = "mysql+mysqlconnector://root:admin1234@vprodb/flaskdb"
+connection = "mysql+mysqlconnector://root:admin1234@db/flaskdb"
