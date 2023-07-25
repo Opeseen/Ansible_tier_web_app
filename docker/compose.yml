@@ -11,10 +11,10 @@ services:
       - dbData:/var/lib/mysql
 
   check-db-readiness: 
-    image: jwilder/dockerize
+    image: jwilder/dockerize:0.6.1
     depends_on:
       - db
-    command: 'dockerize -wait tcp://db:3306 -timeout 15s'
+    command: 'dockerize -wait tcp://db:3306 -timeout 60m'
 
   app:
     build:
