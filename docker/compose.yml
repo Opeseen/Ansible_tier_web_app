@@ -10,15 +10,16 @@ services:
     volumes:
       - dbData:/var/lib/mysql
 
-  check-db-readiness:
-    image: jwilder/dockerize:0.6.1
+  check-db-readiness: 
+    image: jwilder/dockerize
     depends_on:
       - db
-    command: 'dockerize -wait=tcp://db:5432'
+    command: 'dockerize -wait tcp://db:3306 -timeout 15s'
 
   app:
     build:
       context: ./app
+    container_name: myapp
     links:
       - "db"
     depends_on:
