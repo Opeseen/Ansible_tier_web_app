@@ -21,7 +21,7 @@ services:
       context: ./app
     container_name: myapp
     links:
-      - "db"
+      - db
     depends_on:
       - check-db-readiness
     ports:
