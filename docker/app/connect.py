@@ -3,8 +3,8 @@ import mysql.connector
 try:
     mydb = mysql.connector.connect(
         host="vprodb",
-		user="root",
-		password="admin1234"
+		user="horpe",
+		password="mundial"
 	)
     print('DATABASE CONNECTED')
     
