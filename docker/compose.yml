@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  vprodb:
+  db:
     image: mysql:8.0
     ports:
       - "3306:3306"
@@ -10,13 +10,13 @@ services:
     volumes:
       - dbData:/var/lib/mysql
 
-  vproapp:
+  app:
     build:
       context: ./app
     links:
-      - "vprodb"
+      - "db"
     depends_on:
-      vprodb:
+      db:
         condition: service_started
     ports:
       - "3000:3000"
