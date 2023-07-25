@@ -8,15 +8,18 @@ services:
       MYSQL_ROOT_PASSWORD: admin1234
       MYSQL_DATABASE: flaskdb
     volumes:
-      - vprodbdata:/var/lib/mysql
+      - dbData:/var/lib/mysql
 
   vproapp:
     build:
       context: ./app
     links:
       - "vprodb"
+    depends_on:
+      vprodb:
+        condition: service_started
     ports:
       - "3000:3000"
 
 volumes:
-  vprodbdata: {}
+  dbData: {}
