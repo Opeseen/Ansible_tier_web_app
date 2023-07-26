@@ -2,12 +2,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy;
 import mysql.connector
 from .config import connection
+import time
 
 db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'admin'
+    time.sleep(10)
     app.config['SQLALCHEMY_DATABASE_URI'] = connection
     db.init_app(app)
 
