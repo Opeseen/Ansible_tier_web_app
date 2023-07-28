@@ -22,8 +22,6 @@ services:
     container_name: myapp
     links:
       - db
-    depends_on:
-      - check-db-readiness
     ports:
       - "3000:3000"
     restart_policy:
