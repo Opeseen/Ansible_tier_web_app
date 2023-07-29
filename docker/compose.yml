@@ -26,7 +26,7 @@ services:
       - check-db-readiness
     ports:
       - "3000:3000"
-    entrypoint: "sleep 5"
+    command: bash -c "./wait-for-it.sh --timeout db:3306 && python main.py"
     restart: on-failure
 
 volumes:
