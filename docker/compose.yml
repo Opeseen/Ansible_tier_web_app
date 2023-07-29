@@ -22,11 +22,11 @@ services:
     container_name: myapp
     links:
       - db
-    # depends_on:
-    #   - check-db-readiness
+    depends_on:
+      - db
     ports:
       - "3000:3000"
-    command: bash -c "./wait-for-it.sh --timeout=300 db:3306 && python main.py"
+    command: bash -c "./wait-for-it.sh --timeout=60 db:3306"
     restart: on-failure
 
 volumes:
