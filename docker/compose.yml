@@ -10,11 +10,11 @@ services:
     volumes:
       - dbData:/var/lib/mysql
 
-  check-db-readiness: 
-    image: jwilder/dockerize:0.6.1
-    depends_on:
-      - db
-    command: 'dockerize -wait tcp://db:3306 -timeout 60m'
+  # check-db-readiness: 
+  #   image: jwilder/dockerize:0.6.1
+  #   depends_on:
+  #     - db
+  #   command: 'dockerize -wait tcp://db:3306 -timeout 60m'
 
   app:
     build:
@@ -22,11 +22,11 @@ services:
     container_name: myapp
     links:
       - db
-    depends_on:
-      - check-db-readiness
+    # depends_on:
+    #   - check-db-readiness
     ports:
       - "3000:3000"
-    command: bash -c "./wait-for-it.sh --timeout db:3306 && python main.py"
+    command: bash -c "./wait-for-it.sh --timeout=300 db:3306 && python main.py"
     restart: on-failure
 
 volumes:
