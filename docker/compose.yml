@@ -24,5 +24,17 @@ services:
     command: bash -c "./wait-for-it.sh --timeout=60 --strict db:3306 && python main.py"
     restart: on-failure
 
+  web:
+    build:
+      context: ./web
+    container_name: myweb
+    links:
+      - app
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    restart: on-failure
+    
 volumes:
   dbData: {}
